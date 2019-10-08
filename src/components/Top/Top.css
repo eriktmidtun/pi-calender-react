@@ -1,11 +1,13 @@
 .top-container {
     position: relative;
     width: 100%;
-    height: 45%;
+    height: 42%;
     /* background-color: red */;
 }
 
 .data-container {
+    width: 50%;
+    display: grid;
     position: absolute;
     /* background-color: rgba(180, 180, 180, 0.5);  */
     right: 0;
