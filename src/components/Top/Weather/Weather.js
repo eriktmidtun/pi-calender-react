@@ -1,33 +1,18 @@
 import React, { Component } from 'react';
 import "./Weather.css";
 
+
 class Weather extends Component {
-  constructor(){
-    super()
-    this.state = {
-        placename: "Place",
-        now: 4,
-        temp: {
-            "0" : {
-                time: "18-00",
-                temp: 3
-            },
-            "1" : {
-                time: "00-06",
-                temp: -1
-            },
-            "2" : {
-                time: "06-12",
-                temp: -2
-            },
-            "3" : {
-                time: "12-18",
-                temp: -4
-            }
-        }
-    }
+
+  timestamp( string ) {
+    const time = new Date(string);
+    return String(time.getHours());
   }
+
+
   render() {
+    const weather = this.props.forecast;
+    const laterCasts = weather.forecast.slice(1);
     return (
       <div className="weather-container">
         <div className={"placename"}>
@@ -36,64 +21,45 @@ class Weather extends Component {
                 alt={"yr.no"}
                 width={"25px"}
             />
-            { this.state.placename }
+            { weather.name }
         </div>
         <div className={"temps"}>
             <div className={"currentTemp"}>
                 <img classname={"img"}
-                    src={"http://yr.github.io/weather-symbols/png/100/01d.png"}
+                    src={"http://yr.github.io/weather-symbols/png/100/"+ weather.forecast[0].symbol + ".png"}
                     alt={"weather"}
                     width={"50px"}
                 />
-                { this.state.now + "°" }
+                {   
+                    //console.log(weather.forecast[0])
+                     weather.forecast[0].temperature + "°" 
+                }
             </div>
-            <div className={"otherTemps time-intervals"}>
-                <div className={"otherTemp"}>
-                    { this.state.temp[0].time  }
-                </div>
-                <div className={"otherTemp"}>
-                    { this.state.temp[1].time }
-                </div>
-                <div className={"otherTemp"}>
-                    { this.state.temp[2].time } 
-                </div>
-                <div className={"otherTemp"}>
-                    { this.state.temp[3].time }
-                </div>
+            <div className={ "otherTemps time-intervals" }>
+            {
+                laterCasts.map( item => {
+                    return (
+                        <div className={"otherTemp"}>
+                            { this.timestamp(item.from) + "-" + this.timestamp(item.to) }
+                        </div>
+                    )
+                }) 
+            }
             </div>
             <div className={"otherTemps line"}>
-                <div className={"otherTemp"}>
-                    <img classname={"img"}
-                        src={"http://yr.github.io/weather-symbols/png/100/01n.png"}
-                        alt={"weather"}
-                        width={"35px"}
-                    />
-                    { this.state.temp[0].temp + "°" }
-                </div>
-                <div className={"otherTemp"}>
-                    <img classname={"img"}
-                        src={"http://yr.github.io/weather-symbols/png/100/01n.png"}
-                        alt={"weather"}
-                        width={"35px"}
-                    />
-                    { this.state.temp[1].temp + "°" }
-                </div>
-                <div className={"otherTemp"}>
-                    <img classname={"img"}
-                        src={"http://yr.github.io/weather-symbols/png/100/01d.png"}
-                        alt={"weather"}
-                        width={"35px"}
-                    />
-                    { this.state.temp[2].temp + "°" } 
-                </div>
-                <div className={"otherTemp"}>
-                    <img classname={"img"}
-                        src={"http://yr.github.io/weather-symbols/png/100/02d.png"}
-                        alt={"weather"}
-                        width={"35px"}
-                    />
-                    { this.state.temp[3].temp + "°" }
-                </div>
+            {
+                laterCasts.map( item => {
+                    return (
+                        <div className={"otherTemp"}>
+                            <img classname={"img"}
+                                src={"http://yr.github.io/weather-symbols/png/100/" + item.symbol + ".png"}
+                                alt={"weather"}
+                                width={"35px"} />
+                            {  item.temperature + "°" }
+                        </div>
+                    )
+                }) 
+            }
             </div>
         </div>
       </div>
