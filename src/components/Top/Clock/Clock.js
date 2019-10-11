@@ -5,13 +5,16 @@ class Clock extends Component {
   constructor(){
     super()
     this.state = {
-      time: this.getTime()
+      secs : true,
+      time: this.getTime(this.secs),
+      
     }
   }
 
-  getTime() {
+  getTime(secs) {
     let now = new Date();
-    return this.checkTime(now.getHours()) + ":" + this.checkTime(now.getMinutes())
+    const s = secs ? ":" + this.checkTime(now.getSeconds()) : "";
+    return this.checkTime(now.getHours()) + ":" + this.checkTime(now.getMinutes()) + s
   }
 
   //adds zero in front of numbers < 10
@@ -21,7 +24,7 @@ class Clock extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.setState({ time: this.getTime() }), 1000);
+    this.interval = setInterval(() => this.setState({ time: this.getTime(this.state.secs) }), 1000);
   }
 
   componentWillUnmount() {
