@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./Weather.css";
+import logo from './yr-logo.png';
 
 const symbolBaseUrl = "http://nrkno.github.io/yr-weather-symbols/png/100/";
 class Weather extends Component {
@@ -17,7 +18,7 @@ class Weather extends Component {
       <div className="weather-container">
         <div className={"placename"}>
             <img classname={"img"}
-                src={"https://theme.zdassets.com/theme_assets/657817/aa5f9ab188078fbb14b21b7765e12278646ac264.png"}
+                src={logo}
                 alt={"yr.no"}
                 width={"25px"}
             />
