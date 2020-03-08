@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Iframe from 'react-iframe'
 import './Calender.css';
 
@@ -16,7 +16,7 @@ class Calender extends Component {
   
   render() {
     return (
-      <div className="calender-container">
+      <Fragment>
        <Iframe src="https://calendar.google.com/calendar/embed?wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FOslo&amp;src=bm8ubm9yd2VnaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%237986CB&amp;showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0" 
         width="100%"
         height="100%"
@@ -25,7 +25,7 @@ class Calender extends Component {
         display="initial"
         frameBorder="0"
         position="relative"/>
-      </div>
+      </Fragment>
     );
   }
 }

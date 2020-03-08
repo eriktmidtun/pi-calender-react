@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import Top from './components/Top/Top';
-import Calender from './components/Calender/Calender';
-import './App.css';
+import React, { Component } from "react";
+import Top from "./components/Top/Top";
+import Calender from "./components/Calender/Calender";
+import "./App.css";
 /* import Iframe from 'react-iframe';
 import ReactDOM from 'react-dom'; */
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       currentCalender: {
         name: "calender1",
         url: "calendar.google"
       }
-    }
+    };
   }
 
- /*  componentDidMount() {
+  /*  componentDidMount() {
     this.focusDiv();
   }
 
@@ -29,12 +29,15 @@ class App extends Component {
     ReactDOM.findDOMNode(Iframe).focus();
   } */
 
-  
   render() {
     return (
       <div className="container">
-        <Top name={ this.state.currentCalender.name }/> 
-        <Calender />
+        <div className="top-container">
+          <Top name={this.state.currentCalender.name} />
+        </div>
+        <div className="calender-container">
+          <Calender />
+        </div>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./Weather.css";
 
-
+const symbolBaseUrl = "http://nrkno.github.io/yr-weather-symbols/png/100/";
 class Weather extends Component {
 
   timestamp( string ) {
@@ -26,7 +26,7 @@ class Weather extends Component {
         <div className={"temps"}>
             <div className={"currentTemp"}>
                 <img classname={"img"}
-                    src={"http://yr.github.io/weather-symbols/png/100/"+ weather.forecast[0].symbol + ".png"}
+                    src={symbolBaseUrl+ weather.forecast[0].symbol + ".png"}
                     alt={"weather"}
                     width={"50px"}
                 />
@@ -52,7 +52,7 @@ class Weather extends Component {
                     return (
                         <div className={"otherTemp"}>
                             <img classname={"img"}
-                                src={"http://yr.github.io/weather-symbols/png/100/" + item.symbol + ".png"}
+                                src={symbolBaseUrl + item.symbol + ".png"}
                                 alt={"weather"}
                                 width={"35px"} />
                             {  item.temperature + "°" }
